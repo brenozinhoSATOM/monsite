@@ -5,18 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Antoine Desperrier — Portfolio</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&family=Inter&display=swap" rel="stylesheet">
   <script>
     tailwind.config = {
       theme: {
         extend: {
           colors: {
-            primary: '#B80000', // accent rouge Porsche
-            dark: '#0A0A0A',
-            lightDark: '#1A1A1A',
-            accent: '#E5E5E5'
+            primary: '#8B0000', // Bordeaux
+            gold: '#D4AF37',    // Doré
+            electric: '#1E90FF', // Bleu électrique
+            darkBg: '#121212',
           },
           fontFamily: {
-            sans: ['Poppins', 'sans-serif'],
+            poppins: ['Poppins', 'sans-serif'],
+            inter: ['Inter', 'sans-serif'],
           },
         },
       },
@@ -35,142 +37,156 @@
   </style>
 </head>
 
-<body class="bg-dark text-white font-sans">
+<body class="bg-darkBg text-gray-100 font-inter">
   <!-- Navbar -->
-  <header class="fixed w-full top-0 left-0 z-50 bg-dark bg-opacity-90 shadow-lg">
-    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-      <div class="w-10 h-10 bg-accent rounded-full overflow-hidden"> <!-- Photo slot -->
-        <!-- Ajoute ici une <img> plus tard -->
+  <header class="w-full fixed top-0 left-0 z-50 bg-darkBg shadow-lg">
+    <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+      <!-- Champ pour la photo -->
+      <div class="w-10 h-10 rounded-full bg-gray-700 overflow-hidden">
+        <!-- Remplace cette image par la tienne -->
+        <img src="photo.jpg" alt="Photo" class="w-full h-full object-cover">
       </div>
-      <nav class="space-x-6 text-sm">
-        <a href="#about" class="hover:text-primary transition">À propos</a>
-        <a href="#skills" class="hover:text-primary transition">Compétences</a>
-        <a href="#experience" class="hover:text-primary transition">Expériences</a>
-        <a href="#projects" class="hover:text-primary transition">Projets</a>
-        <a href="#contact" class="hover:text-primary transition">Contact</a>
+      <nav class="space-x-6">
+        <a href="#about" class="hover:text-primary">À propos</a>
+        <a href="#formation" class="hover:text-primary">Formation</a>
+        <a href="#skills" class="hover:text-primary">Compétences</a>
+        <a href="#experience" class="hover:text-primary">Expériences</a>
+        <a href="#projects" class="hover:text-primary">Projets</a>
+        <a href="#contact" class="hover:text-primary">Contact</a>
       </nav>
     </div>
   </header>
 
-  <!-- Hero Section -->
-  <section class="h-screen flex items-center justify-center bg-lightDark text-center fade-in">
-    <div>
-      <h1 class="text-5xl font-bold mb-4">Antoine Desperrier</h1>
-      <p class="text-xl text-accent">Étudiant passionné par la tech, les réseaux et le développement</p>
-    </div>
+  <!-- Hero -->
+  <section class="pt-32 pb-20 text-center fade-in">
+    <h1 class="text-5xl font-poppins font-bold text-primary mb-4">Antoine Desperrier</h1>
+    <p class="text-xl text-gray-300 mb-2">Étudiant passionné en informatique, réseaux et programmation</p>
+    <p class="text-electric">« Rigueur, curiosité, créativité. »</p>
   </section>
 
   <!-- À propos -->
-  <section id="about" class="py-20 fade-in">
-    <div class="max-w-4xl mx-auto px-6 text-center">
-      <h2 class="text-3xl font-bold mb-6">À propos de moi</h2>
-      <p class="text-accent">
-        Curieux, créatif, rigoureux et autonome. Spécialisé en infrastructures Linux & Windows,
-        réseaux et programmation (front-end & back-end).
+  <section id="about" class="py-16 fade-in">
+    <div class="max-w-4xl mx-auto px-4">
+      <h2 class="text-3xl font-poppins text-gold mb-4">À propos de moi</h2>
+      <p class="text-gray-300">
+        Étudiant en informatique au campus Satom IT (Genève), je suis passionné par l’infrastructure, le développement web et les systèmes réseau. Mon objectif : allier créativité et rigueur pour mener à bien des projets concrets et ambitieux.
       </p>
     </div>
   </section>
 
+  <!-- Formation -->
+  <section id="formation" class="py-16 fade-in bg-gray-900">
+    <div class="max-w-4xl mx-auto px-4">
+      <h2 class="text-3xl font-poppins text-gold mb-4">Formation</h2>
+      <ul class="list-disc list-inside space-y-2 text-gray-300">
+        <li>2024 — Baccalauréat Général, Lycée International Ferney-Voltaire</li>
+        <li>2024 - 2029 — Master Informatique, Estiam (Campus Genève — Satom IT)</li>
+      </ul>
+    </div>
+  </section>
+
   <!-- Compétences -->
-  <section id="skills" class="py-20 bg-lightDark fade-in">
-    <div class="max-w-4xl mx-auto px-6">
-      <h2 class="text-3xl font-bold mb-8 text-center">Compétences</h2>
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+  <section id="skills" class="py-16 fade-in">
+    <div class="max-w-4xl mx-auto px-4">
+      <h2 class="text-3xl font-poppins text-gold mb-8 text-center">Compétences</h2>
+      <div class="space-y-6">
+        <!-- Exemple : tu modifies les % directement ici -->
         <div>
-          <h3 class="font-semibold mb-2">Front-end</h3>
-          <ul class="list-disc list-inside text-accent">
-            <li>HTML/CSS, Tailwind CSS</li>
-            <li>JavaScript, React.js</li>
-          </ul>
+          <div class="flex justify-between mb-1">
+            <span>HTML/CSS</span><span>90%</span>
+          </div>
+          <div class="w-full bg-gray-700 rounded-full h-3">
+            <div class="bg-primary h-3 rounded-full" style="width: 90%;"></div>
+          </div>
         </div>
         <div>
-          <h3 class="font-semibold mb-2">Back-end</h3>
-          <ul class="list-disc list-inside text-accent">
-            <li>Node.js, Python</li>
-            <li>C, C++, C#</li>
-          </ul>
+          <div class="flex justify-between mb-1">
+            <span>JavaScript</span><span>80%</span>
+          </div>
+          <div class="w-full bg-gray-700 rounded-full h-3">
+            <div class="bg-electric h-3 rounded-full" style="width: 80%;"></div>
+          </div>
         </div>
         <div>
-          <h3 class="font-semibold mb-2">Réseaux & OS</h3>
-          <ul class="list-disc list-inside text-accent">
-            <li>Windows (Client, Server)</li>
-            <li>Linux</li>
-          </ul>
+          <div class="flex justify-between mb-1">
+            <span>React.js</span><span>75%</span>
+          </div>
+          <div class="w-full bg-gray-700 rounded-full h-3">
+            <div class="bg-gold h-3 rounded-full" style="width: 75%;"></div>
+          </div>
         </div>
         <div>
-          <h3 class="font-semibold mb-2">Langues</h3>
-          <ul class="list-disc list-inside text-accent">
-            <li>Français (maternelle)</li>
-            <li>Anglais (B2)</li>
-            <li>Allemand (A2), Portugais (A2)</li>
-          </ul>
+          <div class="flex justify-between mb-1">
+            <span>Node.js</span><span>65%</span>
+          </div>
+          <div class="w-full bg-gray-700 rounded-full h-3">
+            <div class="bg-primary h-3 rounded-full" style="width: 65%;"></div>
+          </div>
+        </div>
+        <div>
+          <div class="flex justify-between mb-1">
+            <span>Python</span><span>70%</span>
+          </div>
+          <div class="w-full bg-gray-700 rounded-full h-3">
+            <div class="bg-electric h-3 rounded-full" style="width: 70%;"></div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Expériences -->
-  <section id="experience" class="py-20 fade-in">
-    <div class="max-w-4xl mx-auto px-6">
-      <h2 class="text-3xl font-bold mb-8 text-center">Expériences</h2>
-      <ul class="space-y-6 text-accent">
+  <section id="experience" class="py-16 fade-in bg-gray-900">
+    <div class="max-w-4xl mx-auto px-4">
+      <h2 class="text-3xl font-poppins text-gold mb-4">Expériences</h2>
+      <ul class="space-y-4">
         <li>
-          <h4 class="font-semibold text-lg">Stage technicien informatique — Game Goat (mars-avril 2025)</h4>
-          <p>Montage, réparation d'ordinateurs, utilisation d'outils no-code pour le développement web.</p>
+          <h3 class="font-semibold text-primary text-xl">Stage Technicien Informatique — Game Goat (mars-avril 2025)</h3>
+          <p class="text-gray-300">Montage, réparation, outils no-code pour développement web. Stage d’un mois en entreprise dans le cadre de ma formation.</p>
         </li>
         <li>
-          <h4 class="font-semibold text-lg">Pose de cuisines — SEB Multiservices Sàrl (juillet 2024)</h4>
-          <p>Pose de cuisines sur mesure, bassin lémanique et canton de Neuchâtel.</p>
-        </li>
-        <li>
-          <h4 class="font-semibold text-lg">Éclaircissage de pommiers — Ferme des Grands Champs (juillet 2023)</h4>
-          <p>Travail saisonnier en verger pour favoriser la croissance des fruits.</p>
-        </li>
-        <li>
-          <h4 class="font-semibold text-lg">Paysagisme (été 2022)</h4>
-          <p>Entretien d'espaces verts pour particuliers : tonte, taille, désherbage, nettoyage.</p>
+          <h3 class="font-semibold text-primary text-xl">Pose de cuisines — SEB Multiservices (juillet 2024)</h3>
+          <p class="text-gray-300">Installation de cuisines sur mesure dans le bassin lémanique et le canton de Neuchâtel.</p>
         </li>
       </ul>
     </div>
   </section>
 
   <!-- Projets -->
-  <section id="projects" class="py-20 bg-lightDark fade-in">
-    <div class="max-w-4xl mx-auto px-6">
-      <h2 class="text-3xl font-bold mb-8 text-center">Projets</h2>
-      <ul class="space-y-6 text-accent">
+  <section id="projects" class="py-16 fade-in">
+    <div class="max-w-4xl mx-auto px-4">
+      <h2 class="text-3xl font-poppins text-gold mb-4">Projets</h2>
+      <ul class="space-y-4">
         <li>
-          <h4 class="font-semibold text-lg">Portfolio personnel</h4>
-          <p>Site web développé avec Tailwind CSS et hébergé sur GitHub Pages.</p>
+          <h3 class="font-semibold text-electric text-xl">Portfolio Personnel</h3>
+          <p class="text-gray-300">Site web développé avec Tailwind CSS et hébergé sur GitHub Pages.</p>
         </li>
         <li>
-          <h4 class="font-semibold text-lg">Application Todo</h4>
-          <p>App React avec gestion d'état via Redux.</p>
+          <h3 class="font-semibold text-electric text-xl">Application Todo</h3>
+          <p class="text-gray-300">App React avec gestion d’état via Redux.</p>
         </li>
       </ul>
     </div>
   </section>
 
   <!-- Contact -->
-  <section id="contact" class="py-20 fade-in">
-    <div class="max-w-4xl mx-auto px-6 text-center">
-      <h2 class="text-3xl font-bold mb-6">Contact</h2>
-      <p class="text-accent mb-4">N'hésitez pas à me contacter pour toute opportunité ou collaboration.</p>
-      <div class="space-x-4">
-        <a href="mailto:antoine.desperrier@satom.ch" class="underline hover:text-primary">Email</a>
-        <a href="#" class="underline hover:text-primary">LinkedIn</a>
-        <a href="#" class="underline hover:text-primary">GitHub</a>
-      </div>
+  <section id="contact" class="py-16 fade-in bg-gray-900 text-center">
+    <h2 class="text-3xl font-poppins text-gold mb-4">Contact</h2>
+    <p class="text-gray-300 mb-2">antoine.desperrier@satom.ch</p>
+    <p class="text-gray-300 mb-4">+33 6 18 51 26 58 — Genève</p>
+    <div class="space-x-4">
+      <a href="#" class="underline hover:text-electric">LinkedIn</a>
+      <a href="#" class="underline hover:text-electric">GitHub</a>
     </div>
   </section>
 
   <!-- Footer -->
-  <footer class="py-6 bg-dark text-center text-sm text-accent">
-    © 2025 Antoine Desperrier — Tous droits réservés
+  <footer class="py-8 text-center text-gray-500 text-sm">
+    © 2025 Antoine Desperrier — Tous droits réservés.
   </footer>
 
-  <!-- JS animations -->
   <script>
+    // Fade in on scroll
     const faders = document.querySelectorAll('.fade-in');
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
@@ -179,7 +195,6 @@
         }
       });
     }, { threshold: 0.1 });
-
     faders.forEach(fader => observer.observe(fader));
   </script>
 </body>
