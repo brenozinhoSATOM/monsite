@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mon Portfolio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#6366f1',
+            darkBg: '#0f172a',
+          },
+        },
+      },
+    };
+  </script>
+  <style>
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+
+<body class="bg-white text-gray-900 dark:bg-darkBg dark:text-white transition-colors duration-300">
+  <!-- Navbar -->
+  <header class="w-full fixed top-0 left-0 z-50 bg-white dark:bg-darkBg shadow">
+    <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+      <h1 class="text-xl font-bold">AD</h1>
+      <button id="toggleDark" class="text-sm border px-2 py-1 rounded hover:bg-gray-200 dark:hover:bg-gray-700">🌓 Mode</button>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="pt-24 pb-16 text-center fade-in">
+    <h2 class="text-4xl font-bold mb-2">Bonjour, je suis <span class="text-primary">Antoine Desperrier</span></h2>
+    <p class="text-lg text-gray-600 dark:text-gray-300">Etudiant passionné par la tech, programmation et les réseaux</p>
+  </section>
+
+  <!-- À propos -->
+  <section id="about" class="py-16 bg-gray-50 dark:bg-gray-800 fade-in">
+    <div class="max-w-4xl mx-auto px-4">
+      <h3 class="text-2xl font-bold mb-4">À propos de moi</h3>
+      <p class="text-gray-700 dark:text-gray-300">
+        Je suis une personne curieuse, créative, rigoureuse et autonome. Je me spécialise dans la mise en place d'infrastructures (Linux & Windows), les réseaux et la programmation.
+      </p>
+    </div>
+  </section>
+
+  <!-- Formation -->
+  <section id="formation" class="py-16 fade-in">
+    <div class="max-w-4xl mx-auto px-4">
+      <h3 class="text-2xl font-bold mb-4">Formation</h3>
+      <ul class="list-disc list-inside space-y-2 text-gray-700 dark:text-gray-300">
+        <li>2024 | Baccalauréat Général — Lycée de Ferney Voltaire (Site de Saint-Genis-Pouilly)</li>
+        <li>2024 - 2029 | Master Informatique Estiam — Satom IT & Learning Solutions (Campus de Genève)</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Compétences -->
+  <!-- Compétences -->
+<section id="skills" class="py-16 bg-gray-100 dark:bg-gray-700 fade-in">
+  <div class="max-w-4xl mx-auto px-4">
+    <h3 class="text-2xl font-bold mb-8 text-center">Compétences</h3>
+    
+    <div class="space-y-6">
+      <!-- Compétence -->
+      <div>
+        <div class="flex justify-between mb-1">
+          <span class="text-gray-800 dark:text-gray-200">HTML/CSS</span>
+          <span class="text-sm text-gray-500">90%</span>
+        </div>
+        <div class="w-full bg-gray-300 dark:bg-gray-600 rounded-full h-3">
+          <div class="bg-primary h-3 rounded-full" style="width: 90%;"></div>
+        </div>
+      </div>
+
+      <div>
+        <div class="flex justify-between mb-1">
+          <span class="text-gray-800 dark:text-gray-200">JavaScript</span>
+          <span class="text-sm text-gray-500">80%</span>
+        </div>
+        <div class="w-full bg-gray-300 dark:bg-gray-600 rounded-full h-3">
+          <div class="bg-primary h-3 rounded-full" style="width: 80%;"></div>
+        </div>
+      </div>
+
+      <div>
+        <div class="flex justify-between mb-1">
+          <span class="text-gray-800 dark:text-gray-200">React.js</span>
+          <span class="text-sm text-gray-500">75%</span>
+        </div>
+        <div class="w-full bg-gray-300 dark:bg-gray-600 rounded-full h-3">
+          <div class="bg-primary h-3 rounded-full" style="width: 75%;"></div>
+        </div>
+      </div>
+
+      <div>
+        <div class="flex justify-between mb-1">
+          <span class="text-gray-800 dark:text-gray-200">Node.js</span>
+          <span class="text-sm text-gray-500">65%</span>
+        </div>
+        <div class="w-full bg-gray-300 dark:bg-gray-600 rounded-full h-3">
+          <div class="bg-primary h-3 rounded-full" style="width: 65%;"></div>
+        </div>
+      </div>
+
+      <div>
+        <div class="flex justify-between mb-1">
+          <span class="text-gray-800 dark:text-gray-200">Tailwind CSS</span>
+          <span class="text-sm text-gray-500">85%</span>
+        </div>
+        <div class="w-full bg-gray-300 dark:bg-gray-600 rounded-full h-3">
+          <div class="bg-primary h-3 rounded-full" style="width: 85%;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+  <!-- Projets -->
+  <section id="projects" class="py-16 fade-in">
+    <div class="max-w-4xl mx-auto px-4">
+      <h3 class="text-2xl font-bold mb-4">Projets</h3>
+      <ul class="space-y-4">
+        <li>
+          <h4 class="font-semibold text-lg">Portfolio Perso</h4>
+          <p class="text-gray-600 dark:text-gray-300">Site web développé avec Tailwind CSS et hébergé sur GitHub Pages.</p>
+        </li>
+        <li>
+          <h4 class="font-semibold text-lg">Application Todo</h4>
+          <p class="text-gray-600 dark:text-gray-300">App React avec gestion d'état via Redux.</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Objectifs futurs -->
+  <section id="future" class="py-16 bg-gray-50 dark:bg-gray-800 fade-in">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <h3 class="text-2xl font-bold mb-4">Projets futurs</h3>
+      <p class="text-gray-700 dark:text-gray-300">
+        Je souhaite approfondir mes connaissances en IA, contribuer à des projets open-source, et créer des outils utiles pour la communauté tech.
+      </p>
+    </div>
+  </section>
+
+  <!-- Compteur -->
+  <section class="py-16 text-center fade-in">
+    <div class="max-w-4xl mx-auto px-4">
+      <h3 class="text-2xl font-bold mb-4">En quelques chiffres</h3>
+      <div class="grid grid-cols-2 sm:grid-cols-3 gap-6">
+        <div>
+          <p class="text-4xl font-bold text-primary" id="expCount">0</p>
+          <p>Années d'expérience</p>
+        </div>
+        <div>
+          <p class="text-4xl font-bold text-primary" id="projectCount">0</p>
+          <p>Projets réalisés</p>
+        </div>
+        <div>
+          <p class="text-4xl font-bold text-primary" id="coffeeCount">0</p>
+          <p>Tasses de café ☕</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-8 bg-gray-900 text-white text-center">
+    <p>© 2025 MonPortfolio — Tous droits réservés</p>
+    <div class="mt-2 space-x-4">
+      <a href="#" class="underline">LinkedIn</a>
+      <a href="#" class="underline">GitHub</a>
+      <a href="mailto:email@example.com" class="underline">Contact</a>
+    </div>
+  </footer>
+
+  <!-- JS pour dark mode + animation -->
+  <script>
+    const toggleBtn = document.getElementById('toggleDark');
+    toggleBtn.addEventListener('click', () => {
+      document.documentElement.classList.toggle('dark');
+    });
+
+    // Fade in on scroll
+    const faders = document.querySelectorAll('.fade-in');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    faders.forEach(fader => observer.observe(fader));
+
+    // Animated counters
+    function animateValue(id, start, end, duration) {
+      const obj = document.getElementById(id);
+      let startTime = null;
+
+      function animate(currentTime) {
+        if (!startTime) startTime = currentTime;
+        const progress = Math.min((currentTime - startTime) / duration, 1);
+        obj.textContent = Math.floor(progress * (end - start) + start);
+        if (progress < 1) requestAnimationFrame(animate);
+      }
+      requestAnimationFrame(animate);
+    }
+
+    // Delay to allow DOM to load
+    window.addEventListener('DOMContentLoaded', () => {
+      animateValue("expCount", 0, 4, 1000);
+      animateValue("projectCount", 0, 12, 1000);
+      animateValue("coffeeCount", 0, 300, 1000);
+    });
+  </script>
+</body>
+</html>
+
+
