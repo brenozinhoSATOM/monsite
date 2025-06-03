@@ -4,20 +4,21 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Site d'Antoine Desperrier, étudiant en informatique passionné par la programmation, les réseaux et les systèmes." />
   <title>Antoine Desperrier</title>
+  <link rel="icon" type="image/png" href="img/favicon.png" />
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&family=Inter&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <script>
     tailwind.config = {
       theme: {
         extend: {
           colors: {
-            electric: '#1E90FF',
-            darkBg: '#0A0A0A',
-            offWhite: '#F5F5F5',
+            darkBg: '#121212',
+            offWhite: '#E5E5E5',
+            accent: '#F28C38',
           },
           fontFamily: {
-            poppins: ['Poppins', 'sans-serif'],
             inter: ['Inter', 'sans-serif'],
           },
         },
@@ -25,6 +26,10 @@
     };
   </script>
   <style>
+    body {
+      background: linear-gradient(rgba(18, 18, 18, 0.98), rgba(18, 18, 18, 0.98)), url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"%3E%3Crect x="0" y="0" width="100" height="100" fill="none"/%3E%3Ccircle cx="50" cy="50" r="1" fill="rgba(255,255,255,0.05)"/%3E%3C/svg%3E');
+    }
+
     .fade-in {
       opacity: 0;
       transform: translateY(20px);
@@ -35,234 +40,256 @@
       opacity: 1;
       transform: translateY(0);
     }
+
+    .card {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      transform: scale(1.02);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    #back-to-top {
+      opacity: 0;
+      transition: opacity 0.3s ease-in-out;
+    }
+
+    #back-to-top.visible {
+      opacity: 1;
+    }
   </style>
 </head>
 
-<body class="bg-gradient-to-br from-black via-[#111] to-darkBg text-offWhite font-inter text-[1.1rem] leading-relaxed">
+<body class="bg-darkBg text-offWhite font-inter text-[1rem] leading-relaxed">
   <!-- Navbar -->
-  <header class="w-full fixed top-0 left-0 z-50 bg-black/80 backdrop-blur shadow">
-    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-      <div class="w-12 h-12 rounded-full overflow-hidden border border-electric">
-        <!-- Remplace cette image par la tienne -->
+  <header class="w-full fixed top-0 left-0 z-50 bg-darkBg/90 backdrop-blur shadow">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 py-4 flex justify-between items-center">
+      <div class="w-10 h-10 rounded-full overflow-hidden border border-accent">
         <img src="img/AD.jpg" alt="Photo" class="w-full h-full object-cover">
       </div>
-      <nav class="space-x-6 text-offWhite text-lg font-medium">
-        <a href="#about" class="hover:text-electric">À propos</a>
-        <a href="#formation" class="hover:text-electric">Formation</a>
-        <a href="#skills" class="hover:text-electric">Compétences</a>
-        <a href="#experience" class="hover:text-electric">Expériences</a>
-        <a href="#projects" class="hover:text-electric">Projets</a>
-        <a href="#contact" class="hover:text-electric">Contact</a>
+      <!-- Hamburger Button for Mobile -->
+      <button id="menu-toggle" class="sm:hidden text-offWhite focus:outline-none">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+        </svg>
+      </button>
+      <!-- Navigation Menu -->
+      <nav id="nav-menu" class="hidden sm:flex space-x-4 text-offWhite text-base font-medium">
+        <a href="#about" class="hover:text-accent transition-colors">À propos</a>
+        <a href="#formation" class="hover:text-accent transition-colors">Formation</a>
+        <a href="#skills" class="hover:text-accent transition-colors">Compétences</a>
+        <a href="#experience" class="hover:text-accent transition-colors">Expériences</a>
+        <a href="#projects" class="hover:text-accent transition-colors">Projets</a>
+        <a href="#contact" class="hover:text-accent transition-colors">Contact</a>
+      </nav>
+    </div>
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden sm:hidden bg-darkBg/95 w-full px-4 py-4">
+      <nav class="flex flex-col space-y-3 text-offWhite text-base font-medium">
+        <a href="#about" class="hover:text-accent transition-colors">À propos</a>
+        <a href="#formation" class="hover:text-accent transition-colors">Formation</a>
+        <a href="#skills" class="hover:text-accent transition-colors">Compétences</a>
+        <a href="#experience" class="hover:text-accent transition-colors">Expériences</a>
+        <a href="#projects" class="hover:text-accent transition-colors">Projets</a>
+        <a href="#contact" class="hover:text-accent transition-colors">Contact</a>
       </nav>
     </div>
   </header>
 
   <!-- Hero -->
-  <section class="pt-40 pb-24 text-center fade-in bg-gradient-to-b from-darkBg to-black">
-    <h1 class="text-6xl font-poppins font-bold text-electric mb-4">Antoine Desperrier</h1>
-    <p class="text-2xl text-gray-300 mb-2">Étudiant passionné en informatique, réseaux et développement</p>
-    <p class="text-electric font-semibold">« Rigueur, curiosité, créativité. »</p>
+  <section class="min-h-screen flex items-center justify-center text-center fade-in">
+    <div class="px-4">
+      <h1 class="text-4xl sm:text-6xl font-bold text-offWhite mb-4">Antoine Desperrier</h1>
+      <p class="text-lg sm:text-xl text-gray-400 mb-6">Étudiant passionné en programmation, réseaux et développement</p>
+      <p class="text-base text-gray-500 mb-8">« Rigueur, curiosité, créativité. »</p>
+      <a href="#contact" class="inline-block bg-accent text-darkBg font-medium px-6 py-3 rounded-full hover:bg-orange-500 transition-colors">Contactez-moi</a>
+    </div>
   </section>
 
   <!-- À propos -->
-  <section id="about" class="py-20 fade-in">
-    <div class="max-w-4xl mx-auto px-6">
-      <h2 class="text-4xl font-poppins text-electric mb-6">🧑‍💻 À propos</h2>
-      <p>
-        Étudiant en informatique au campus Satom IT (Genève), passionné par les systèmes, le développement web et les
-        réseaux. J'aime concrétiser des idées techniques et me former en continu pour progresser.
+  <section id="about" class="py-16 sm:py-24 fade-in bg-darkBg">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6">
+      <h2 class="text-2xl sm:text-3xl font-bold text-accent mb-6">🧑‍💻 À propos</h2>
+      <p class="text-gray-300">
+        Étudiant en informatique chez Satom IT & Learning solutions, passionné par les systèmes, la programmation et les réseaux. J'aime concrétiser des idées techniques et me former en continu pour enrichir mes connaissances.
       </p>
     </div>
   </section>
 
   <!-- Formation -->
-  <section id="formation" class="py-20 fade-in bg-black">
-    <div class="max-w-4xl mx-auto px-6">
-      <h2 class="text-4xl font-poppins text-electric mb-6">🎓 Formation</h2>
-      <ul class="list-disc list-inside space-y-3">
-        <li>2024 — Baccalauréat Général, Lycée International Ferney-Voltaire</li>
-        <li>2024 - 2029 — Master Informatique, Estiam (Campus Genève — Satom IT)</li>
+  <section id="formation" class="py-16 sm:py-24 fade-in bg-[#1A1A1A]">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6">
+      <h2 class="text-2xl sm:text-3xl font-bold text-accent mb-6">🎓 Formation</h2>
+      <ul class="list-disc list-inside space-y-3 text-gray-300">
+        <li>2024 — Baccalauréat Général, Lycée International Ferney-Voltaire 📚</li>
+        <li>2024 - 2029 — Master Informatique, Estiam (Campus Genève — Satom IT) 🖥️</li>
       </ul>
     </div>
   </section>
 
   <!-- Compétences -->
-  <section id="skills" class="py-24 fade-in">
-    <div class="max-w-4xl mx-auto px-6">
-      <h2 class="text-4xl font-poppins text-electric text-center mb-10">🧠 Compétences</h2>
-
-      <!-- Groupe de compétences -->
+  <section id="skills" class="py-16 sm:py-24 fade-in bg-darkBg">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6">
+      <h2 class="text-2xl sm:text-3xl font-bold text-accent text-center mb-8">🧠 Compétences</h2>
       <div class="space-y-12">
-
-        <!-- Exemple Frontend -->
+        <!-- Frontend -->
         <div>
-          <h3 class="text-2xl font-semibold mb-4">FRONTEND</h3>
+          <h3 class="text-lg sm:text-xl font-semibold text-offWhite mb-4">Frontend 🌐</h3>
           <div class="space-y-5">
             <div class="flex items-center space-x-4">
-              <span class="w-1/4">HTML/CSS</span>
+              <span class="w-1/3 sm:w-1/4 text-gray-300">HTML/CSS</span>
               <div class="flex-1 bg-gray-700 h-3 rounded-full">
-                <div class="h-3 bg-electric rounded-full" style="width: 70%;"></div>
+                <div class="h-3 bg-accent rounded-full" style="width: 70%;"></div>
               </div>
-              <span class="w-12 text-right"></span>
             </div>
-
             <div class="flex items-center space-x-4">
-              <span class="w-1/4">JavaScript</span>
+              <span class="w-1/3 sm:w-1/4 text-gray-300">JavaScript</span>
               <div class="flex-1 bg-gray-700 h-3 rounded-full">
-                <div class="h-3 bg-electric rounded-full" style="width: 70%;"></div>
+                <div class="h-3 bg-accent rounded-full" style="width: 70%;"></div>
               </div>
-              <span class="w-12 text-right"></span>
             </div>
           </div>
         </div>
-
-
-
-        <!-- Back-end -->
+        <!-- Backend -->
         <div>
-          <h3 class="text-2xl font-semibold mb-4">BACKEND</h3>
+          <h3 class="text-lg sm:text-xl font-semibold text-offWhite mb-4">Backend ⚙️</h3>
           <div class="space-y-5">
             <div class="flex items-center space-x-4">
-              <span class="w-1/4">Node.js / React.js</span>
+              <span class="w-1/3 sm:w-1/4 text-gray-300">Node.js / React.js</span>
               <div class="flex-1 bg-gray-700 h-3 rounded-full">
-                <div class="h-3 bg-electric rounded-full" style="width: 50%;"></div>
+                <div class="h-3 bg-accent rounded-full" style="width: 50%;"></div>
               </div>
-              <span class="w-12 text-right"></span>
             </div>
-
             <div class="flex items-center space-x-4">
-              <span class="w-1/4">PHP</span>
+              <span class="w-1/3 sm:w-1/4 text-gray-300">PHP</span>
               <div class="flex-1 bg-gray-700 h-3 rounded-full">
-                <div class="h-3 bg-electric rounded-full" style="width: 65%;"></div>
+                <div class="h-3 bg-accent rounded-full" style="width: 65%;"></div>
               </div>
-              <span class="w-12 text-right"></span>
             </div>
           </div>
         </div>
-
         <!-- Langages -->
         <div>
-          <h3 class="text-2xl font-semibold mb-4">LANGAGES</h3>
+          <h3 class="text-lg sm:text-xl font-semibold text-offWhite mb-4">Langages 💻</h3>
           <div class="space-y-5">
             <div class="flex items-center space-x-4">
-              <span class="w-1/4">C / C++ / C# </span>
+              <span class="w-1/3 sm:w-1/4 text-gray-300">C / C++ / C#</span>
               <div class="flex-1 bg-gray-700 h-3 rounded-full">
-                <div class="h-3 bg-electric rounded-full" style="width: 72%;"></div>
+                <div class="h-3 bg-accent rounded-full" style="width: 72%;"></div>
               </div>
-              <span class="w-12 text-right"></span>
             </div>
-
             <div class="flex items-center space-x-4">
-              <span class="w-1/4">Python</span>
+              <span class="w-1/3 sm:w-1/4 text-gray-300">Python</span>
               <div class="flex-1 bg-gray-700 h-3 rounded-full">
-                <div class="h-3 bg-electric rounded-full" style="width: 71%;"></div>
+                <div class="h-3 bg-accent rounded-full" style="width: 71%;"></div>
               </div>
-              <span class="w-12 text-right"></span>
             </div>
           </div>
         </div>
-
         <!-- Réseaux -->
         <div>
-          <h3 class="text-2xl font-semibold mb-4">RESEAUX</h3>
+          <h3 class="text-lg sm:text-xl font-semibold text-offWhite mb-4">Réseaux 🌍</h3>
           <div class="space-y-5">
             <div class="flex items-center space-x-4">
-              <span class="w-1/4">Networking</span>
+              <span class="w-1/3 sm:w-1/4 text-gray-300">Networking</span>
               <div class="flex-1 bg-gray-700 h-3 rounded-full">
-                <div class="h-3 bg-electric rounded-full" style="width: 88%;"></div>
-              </div>
-              <span class="w-12 text-right"></span>
-            </div>
-
-
-            <!-- OS -->
-            <div>
-              <h3 class="text-2xl font-semibold mb-4">SYSTEMES D'EXPLOITATION</h3>
-              <div class="space-y-5">
-                <div class="flex items-center space-x-4">
-                  <span class="w-1/4">Windows (Client, Server)</span>
-                  <div class="flex-1 bg-gray-700 h-3 rounded-full">
-                    <div class="h-3 bg-electric rounded-full" style="width: 90%;"></div>
-                  </div>
-                  <span class="w-12 text-right"></span>
-                </div>
-
-                <div class="flex items-center space-x-4">
-                  <span class="w-1/4">Linux</span>
-                  <div class="flex-1 bg-gray-700 h-3 rounded-full">
-                    <div class="h-3 bg-electric rounded-full" style="width: 72%;"></div>
-                  </div>
-                  <span class="w-12 text-right"></span>
-                </div>
+                <div class="h-3 bg-accent rounded-full" style="width: 88%;"></div>
               </div>
             </div>
-
           </div>
         </div>
+        <!-- Systèmes d'exploitation -->
+        <div>
+          <h3 class="text-lg sm:text-xl font-semibold text-offWhite mb-4">Systèmes d'exploitation 🖧</h3>
+          <div class="space-y-5">
+            <div class="flex items-center space-x-4">
+              <span class="w-1/3 sm:w-1/4 text-gray-300">Windows (Client, Server)</span>
+              <div class="flex-1 bg-gray-700 h-3 rounded-full">
+                <div class="h-3 bg-accent rounded-full" style="width: 90%;"></div>
+              </div>
+            </div>
+            <div class="flex items-center space-x-4">
+              <span class="w-1/3 sm:w-1/4 text-gray-300">Linux</span>
+              <div class="flex-1 bg-gray-700 h-3 rounded-full">
+                <div class="h-3 bg-accent rounded-full" style="width: 72%;"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </section>
 
   <!-- Expériences -->
-  <section id="experience" class="py-20 fade-in bg-black">
-    <div class="max-w-4xl mx-auto px-6">
-      <h2 class="text-4xl font-poppins text-electric mb-6">🛠️ Expériences</h2>
-      <ul class="space-y-8">
-        <li>
-          <h3 class="font-semibold text-2xl text-electric">Stage Technicien Informatique | <a
-              href="https://www.gamegoat.fr/" target="_blank">GameGoat</a> (mars-avril 2025)</h3>
-          <p>Montage, réparation, outils no-code pour développement web. Stage d’un mois en entreprise dans le cadre de
-            ma formation.</p>
-        </li>
-        <li>
-          <h3 class="font-semibold text-2xl text-electric">Pose de cuisines | SEB Multiservices Sàrl (juillet 2024)</h3>
-          <p>Installation de cuisines sur mesure dans le bassin lémanique et le canton de Neuchâtel.</p>
-        </li>
-      </ul>
+  <section id="experience" class="py-16 sm:py-24 fade-in bg-[#1A1A1A]">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6">
+      <h2 class="text-2xl sm:text-3xl font-bold text-accent mb-6">🛠️ Expériences</h2>
+      <div class="space-y-6">
+        <div class="card bg-darkBg p-6 rounded-lg">
+          <h3 class="font-semibold text-lg text-offWhite">Stage Technicien Informatique | <a
+              href="https://www.gamegoat.fr/" target="_blank" class="underline hover:text-accent">GameGoat</a> (mars-avril 2025)</h3>
+          <p class="text-gray-400">Montage, réparation, outils no-code pour développement web 💻. Stage d’un mois en entreprise dans le cadre de ma formation.</p>
+        </div>
+        <div class="card bg-darkBg p-6 rounded-lg">
+          <h3 class="font-semibold text-lg text-offWhite">Pose de cuisines | SEB Multiservices Sàrl (juillet 2024)</h3>
+          <p class="text-gray-400">Installation de cuisines sur mesure dans le bassin lémanique et le canton de Neuchâtel 🔨.</p>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- Projets -->
-  <!-- Projets -->
-  <section id="projects" class="py-20 fade-in">
-    <div class="max-w-4xl mx-auto px-6">
-      <h2 class="text-4xl font-poppins text-electric mb-6">🚀 Projets</h2>
-      <ul class="space-y-8">
-
-        <li>
-          <h3 class="font-semibold text-2xl text-electric">Site Personnel</h3>
-          <p>Site web responsive développé avec Tailwind CSS, intégration manuelle HTML5/CSS3.</p>
-          <p class="text-sm italic text-gray-400 mt-1">Technologies : Tailwind CSS, HTML5, GitHub Pages</p>
-        </li>
-
-        <li>
-          <h3 class="font-semibold text-2xl text-electric">Serveur Debian personnel (Homelab)</h3>
-          <p>Configuration d’un serveur sous Debian avec accès distant sécurisé, pour apprendre l’administration réseau
-            et système.</p>
-          <p class="text-sm italic text-gray-400 mt-1">Technologies : Debian, OpenVPN, SSH</p>
-        </li>
-
-      </ul>
+  <section id="projects" class="py-16 sm:py-24 fade-in bg-darkBg">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6">
+      <h2 class="text-2xl sm:text-3xl font-bold text-accent mb-6">🚀 Projets</h2>
+      <div class="space-y-6">
+        <div class="card bg-darkBg p-6 rounded-lg">
+          <h3 class="font-semibold text-lg text-offWhite">Site Personnel 🌐</h3>
+          <p class="text-gray-400">Site web responsive développé avec Tailwind CSS, intégration manuelle HTML5/CSS3 💻.</p>
+          <p class="text-sm text-gray-500 mt-2">Technologies : Tailwind CSS, HTML5, GitHub Pages</p>
+        </div>
+        <div class="card bg-darkBg p-6 rounded-lg">
+          <h3 class="font-semibold text-lg text-offWhite">Serveur Debian personnel (Homelab) 🖧</h3>
+          <p class="text-gray-400">Configuration d’un serveur sous Debian avec accès distant sécurisé, pour apprendre l’administration réseau et système 🔒.</p>
+          <p class="text-sm text-gray-500 mt-2">Technologies : Debian, OpenVPN, SSH</p>
+        </div>
+      </div>
     </div>
   </section>
-
 
   <!-- Contact -->
-  <section id="contact" class="py-20 fade-in bg-black text-center">
-    <h2 class="text-4xl font-poppins text-electric mb-4">📞 Contact</h2>
-    <p class="text-lg mb-2">antoine.desperrier@satom.ch</p>
-    <p class="text-lg mb-4">+33 6 18 51 26 58 — Genève</p>
-    <div class="space-x-6 text-lg">
-      <a href="#" class="underline hover:text-electric"></a>
-      <a href="https://github.com/brenozinhoSATOM" target="_blank" class="underline hover:text-electric">GitHub</a>
+  <section id="contact" class="py-16 sm:py-24 fade-in bg-[#1A1A1A] text-center">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6">
+      <h2 class="text-2xl sm:text-3xl font-bold text-accent mb-4">📞 Contact</h2>
+      <p class="text-base text-gray-400 mb-2">antoine.desperrier@satom.ch ✉️</p>
+      <p class="text-base text-gray-400 mb-6">+33 6 18 51 26 58 — Genève 📍</p>
+      <div class="space-x-4 text-base">
+        <a href="https://github.com/brenozinhoSATOM" target="_blank" class="underline hover:text-accent">GitHub</a>
+        <a href="https://linkedin.com/in/antoine-desperrier" target="_blank" class="underline hover:text-accent"></a>
+      </div>
     </div>
   </section>
+
+  <!-- Back to Top Button -->
+  <button id="back-to-top" class="fixed bottom-4 right-4 bg-accent text-darkBg p-2 rounded-full shadow-lg hover:bg-orange-500 transition-opacity">
+    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
+    </svg>
+  </button>
 
   <!-- Footer -->
   <footer class="py-8 text-center text-gray-500 text-sm">
-    © 2025 Antoine Desperrier — Tous droits réservés.
+    <p>© 2025 Antoine Desperrier</p>
+    <div class="mt-2 space-x-4">
+      <a href="https://github.com/brenozinhoSATOM" target="_blank" class="hover:text-accent">GitHub</a>
+      <a href="https://linkedin.com/in/antoine-desperrier" target="_blank" class="hover:text-accent"></a>
+    </div>
   </footer>
 
-  <!-- Animation script -->
+  <!-- Scripts -->
   <script>
+    // Fade-in animation
     const faders = document.querySelectorAll('.fade-in');
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
@@ -272,6 +299,26 @@
       });
     }, { threshold: 0.1 });
     faders.forEach(fader => observer.observe(fader));
+
+    // Mobile menu toggle
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    menuToggle.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    // Back to top button
+    const backToTop = document.getElementById('back-to-top');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        backToTop.classList.add('visible');
+      } else {
+        backToTop.classList.remove('visible');
+      }
+    });
+    backToTop.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
   </script>
 </body>
 
